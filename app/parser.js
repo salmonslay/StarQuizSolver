@@ -1,6 +1,6 @@
 //================================
 // This script will convert the localization data to a JSON file.
-// Localization data can be downloaded in any language, altough English is recommended.
+// Localization data can be downloaded in any language, although English is recommended.
 // https://msp2-static.mspcdns.com/translations/multiplayergames/quiz/en_US/localization_data.txt
 //================================
 
