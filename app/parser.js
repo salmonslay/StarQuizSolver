@@ -23,7 +23,8 @@ fs.readFile('localization_data.txt', 'utf8', (err, data) => {
             if (isAnswer) {
                 if (!questions[id]) {
                     questions[id] = {
-                        answers: []
+                        answers: [],
+                        id: id
                     }
                 }
                 questions[id].answers[answer - 1] = (value);
@@ -32,7 +33,8 @@ fs.readFile('localization_data.txt', 'utf8', (err, data) => {
                 if (!questions[id]) {
                     questions[id] = {
                         question: value,
-                        answers: []
+                        answers: [],
+                        id: id
                     }
                 } else questions[id].question = value;
 
