@@ -1,6 +1,10 @@
-const googleIt = require('google-it')
-const fs = require('fs');
+//================================
+// This script will convert the localization data to a JSON file.
+// Localization data can be downloaded in any language, altough English is recommended.
+// https://msp2-static.mspcdns.com/translations/multiplayergames/quiz/en_US/localization_data.txt
+//================================
 
+const fs = require('fs');
 
 fs.readFile('localization_data.txt', 'utf8', (err, data) => {
     if (err) throw err;
@@ -39,44 +43,3 @@ fs.readFile('localization_data.txt', 'utf8', (err, data) => {
         console.log("Questions saved");
     })
 })
-//getAnswer("How many toes do (most) cats have?", ["18", "16", "Cats have no toes"]);
-
-function getAnswer(question, answers) {
-    var result = {
-        question: question,
-        likelyAnswer: null,
-        answers: [{
-            answer: answers[0],
-            score: 0,
-            exact: 0
-        }, {
-            answer: answers[1],
-            score: 0,
-            exact: 0
-        }, {
-            answer: answers[1],
-            score: 0,
-            exact: 0
-        }]
-    };
-
-    //google question
-    googleIt({
-            'query': question
-        }).then(results => {
-
-            //go through each result & answer
-            results.forEach(res => {
-                for (let i = 0; i < 3; i++) {
-                    if (res.snippet.toLowerCase().includes(answers[i].toLowerCase())) scores[i]++;
-                }
-            })
-
-            var guess = scores.indexOf(Math.max(...scores));
-
-            console.log(`Question: ${question}\n\nThe answer is likely ${["A","B","C"][guess]}: ${answers[guess]}\n\n`, result);
-        })
-        .catch(e => {
-            console.error(e);
-        })
-}
